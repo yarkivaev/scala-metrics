@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: [ '11', '17' ]
+        scala: [ '3.3.1' ]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Java ${{ matrix.java }}
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: ${{ matrix.java }}
+        cache: 'sbt'
+
+    - name: Check code formatting
+      run: sbt scalafmtCheckAll scalafmtSbtCheck
+
+    - name: Run scalafix checks
+      run: sbt "scalafixAll --check"
+
+    - name: Compile
+      run: sbt compile
+
+    - name: Run tests
+      run: sbt test

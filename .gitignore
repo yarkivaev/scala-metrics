@@ -1,0 +1,57 @@
+# Playground module (not published)
+playground/
+
+# SBT
+target/
+project/target/
+project/project/
+.bsp/
+.bloop/
+.metals/
+.vscode/
+metals.sbt
+
+# Scala
+*.class
+*.log
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# VS Code
+.vscode/
+
+# Mac
+.DS_Store
+
+# Ensime
+.ensime
+.ensime_cache/
+
+# Worksheet
+*.sc
+
+# Local configuration
+local.sbt
+.env
+
+# Logs
+logs/
+*.log
